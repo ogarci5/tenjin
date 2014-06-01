@@ -1,0 +1,13 @@
+<h4><%=@course.name%> - Units</h4>
+<table class="table">
+<tr>
+	<th colspan="2">Unit</th>
+</tr>
+<%@units.each do |unit|%>
+<tr>
+	<td><%=unit.number%></td>
+	<td><%= mp3_player unit.audio.url %></td>
+</tr>
+<%end%>
+<tr><td colspan="2"><a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">New Unit  <span class="glyphicon glyphicon-plus"></span></td></tr>
+</table>
