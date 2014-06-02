@@ -2,12 +2,28 @@
 <table class="table">
 <tr>
 	<th colspan="2">Unit</th>
+	<th>Duration</th>
 </tr>
 <%@units.each do |unit|%>
 <tr>
 	<td><%=unit.number%></td>
-	<td><%= mp3_player unit.audio.url %></td>
+	<td style="width:100%;">
+		<audio class="mp3_player" controls preload="metadata" onloadedmetadata="loadmetadata(this);">
+  		<source src="<%=unit.audio.url%>" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
+	</td>
+	<td></td>
 </tr>
 <%end%>
-<tr><td colspan="2"><a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">New Unit  <span class="glyphicon glyphicon-plus"></span></td></tr>
+<tr><td colspan="3"><a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">New Unit  <span class="glyphicon glyphicon-plus"></span></td></tr>
 </table>
+<script>
+function loadmetadata(audio){
+	console.log("asd");
+	duration = audio.duration;
+	minutes = parseInt(duration/60);
+	seconds = Math.floor(duration - minutes*60);
+	console.log($(audio).parent().parent().find("td:nth-child(3)").text(minutes+":"+seconds));
+}
+</script>
