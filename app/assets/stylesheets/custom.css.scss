@@ -3,3 +3,27 @@
 .mp3_player {
 	width:100%;
 }
+
+body {
+	background-image: url("/images/BestGirl.png");
+	background-size: 100%;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-color: #121212;
+	color: white;
+	a {
+		color: white;
+		&:hover {
+			color: #dadada;
+		}
+	}
+}
+
+.pagination a {
+	color: #428bca;
+	text-decoration: none;
+	&:hover, &:focus {
+		color: #2a6496;
+		text-decoration: underline;
+	}
+}
