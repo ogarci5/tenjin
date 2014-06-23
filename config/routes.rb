@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :courses do
 		resources :units
   end
-	
+	get 'units/:id' => 'units#download'
 	root 'home#index'
 	
 	# The priority is based upon order of creation: first created -> highest priority.

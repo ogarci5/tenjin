@@ -2,29 +2,20 @@
 <table class="table">
 <tr>
 	<th colspan="2">Unit</th>
+	<th>Time</th>
+	<th>Download</th>
 </tr>
 <%@units.each do |unit|%>
 <tr>
 	<td><%=unit.number%></td>
-	<td style="width:100%;"><a class="audio-link" data-audio="<%=unit.audio.url%>">Load HTML5 Audio</a></td>
+	<td style="width:100%;">
+		<audio class="mp3_player" preload="none" controls>
+			<source src="<%=unit.audio.url%>" type="audio/mpeg">
+			"Your browser does not support the audio element."
+		</audio>
+	<td><%=unit.time%></td>
+	<td><%=link_to 'Download', "/units/#{unit.id}"%></td>
 </tr>
 <%end%>
-<tr><td colspan="2"><%= will_paginate @units, renderer: BootstrapPagination::Rails %><a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">New Unit  <span class="glyphicon glyphicon-plus"></span></td></tr>
+<tr><td colspan="4"><%= will_paginate @units, renderer: BootstrapPagination::Rails %><a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">New Unit  <span class="glyphicon glyphicon-plus"></span></td></tr>
 </table>
-<script>
-$('.audio-link').click(function() {
-	audio_url = $(this).attr('data-audio')
-	$(this).parent().html("<audio class=\"mp3_player\" controls>"+
-  		"<source src=\""+audio_url+"\" type=\"audio/mpeg\">"+
-			"Your browser does not support the audio element."+
-		"</audio>");
-});
-function loadmetadata(audio){
-	console.log("asd");
-	duration = audio.duration;
-	minutes = parseInt(duration/60);
-	seconds = Math.floor(duration - minutes*60);
-	if(seconds<10) {seconds = "0"+seconds;}
-	console.log($(audio).parent().parent().find("td:nth-child(3)").text(minutes+":"+seconds));
-}
-</script>
