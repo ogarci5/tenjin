@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :courses do
 		resources :units
+    resources :resources
   end
+
 	get 'units/:id' => 'units#download'
 	root 'home#index'
 	

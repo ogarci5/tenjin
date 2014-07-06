@@ -1,0 +1,21 @@
+<h4><%=@course.name%> - Resources</h4>
+<table class="table">
+<tr>
+	<th>Name</th>
+	<th>Type</th>
+</tr>
+<%@resources.each do |resource|%>
+<tr>
+	<td><%=link_to resource.name, courses_resource_path(@course, resource)%></td>
+	<td><%=resource.type%></td>
+</tr>
+<%end%>
+<tr>
+  <td colspan="4">
+    <%= will_paginate @resources, renderer: BootstrapPagination::Rails %>
+    <a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/resources/new">
+        New Resources  <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </td>
+</tr>
+</table>

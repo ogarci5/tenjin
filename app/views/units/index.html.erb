@@ -17,5 +17,12 @@
 	<td><%=link_to 'Download', "/units/#{unit.id}"%></td>
 </tr>
 <%end%>
-<tr><td colspan="4"><%= will_paginate @units, renderer: BootstrapPagination::Rails %><a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">New Unit  <span class="glyphicon glyphicon-plus"></span></td></tr>
+<tr>
+  <td colspan="4">
+    <%= will_paginate @units, renderer: BootstrapPagination::Rails %>
+    <a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">
+       New Unit  <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </td>
+</tr>
 </table>

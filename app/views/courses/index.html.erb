@@ -3,11 +3,13 @@
 <tr>
 	<th>Name</th>
 	<th>Units</th>
+    <th>Resources</th>
 </tr>
 <%@courses.each do |course|%>
 <tr>
-	<td><%=course.name%></td>
-	<td><%=link_to 'Units', course_units_path(course)%></td>
+  <td><%=course.name%></td>
+  <td><%=link_to 'Units', course_units_path(course)%></td>
+  <td><%=link_to 'Resources', course_resources_path(course)%></td>
 </tr>
 <%end%>
 </table>

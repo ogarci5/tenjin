@@ -18,7 +18,12 @@ class UnitsController < ApplicationController
 	end
 
 	def download
-		url = Unit.find(params[:id]).audio.path
-		send_file url, x_sendfile: true
+    if url = Unit.find(params[:id]).audio.path
+		  send_file url, x_sendfile: true
+      redirect_to :back
+    else
+      flash[:error] = 'Could not complete file download.'
+      redirect_to :back
+    end
 	end
 end
