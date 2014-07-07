@@ -18,6 +18,17 @@ class ResourcesController < ApplicationController
     @course = Course.find(params[:course_id])
     @resource = Resource.find(params[:id])
   end
+  def edit
+    @course = Course.find(params[:course_id])
+    @resource = Resource.find(params[:id])
+  end
+  def update
+    @course = Course.find(params[:course_id])
+    @resource = Resource.find(params[:id])
+    type = @resource.type ? @resource.type.underscore.to_sym : :resource
+    @resource.update_attributes(params[type])
+    redirect_to course_resource_path(@course, @resource)
+  end
   def download
     if url = Unit.find(params[:id]).audio.path
       send_file url, x_sendfile: true

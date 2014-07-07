@@ -1,3 +1,43 @@
 // Place all the styles related to the resources controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#quiz {
+  display: block;
+  width: 50%;
+  height: 200px;
+  border: 1px solid #666;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right:auto;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+  position: relative;
+  background-color: #fff;
+  -moz-box-shadow: .2em .2em .5em #333;
+  -webkit-box-shadow: .2em .2em .5em #333;
+  box-shadow: .2em .2em .5em #333;
+  color: black;
+  span.question {
+    display: inline-block;
+    font-size: 1.6em;
+    width:100%;
+    vertical-align: middle;
+    line-height:200px;
+  }
+  span.answer {
+    display: hidden;
+    font-size: 1.6em;
+    width:100%;
+    vertical-align: middle;
+    line-height:200px;
+  }
+}
+
+textarea {
+  min-height: 200px;
+}

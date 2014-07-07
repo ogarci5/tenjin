@@ -1,0 +1,43 @@
+<h4><%=@resource.name%></h4>
+<div class="row">
+<% if @resource.type == 'Quiz' %>
+  <div id="quiz"></div>
+  <a id="flip" class="btn btn-default" state="0" number="0">Next</a>
+  <%=link_to edit_course_resource_path(@course, @resource), class: 'btn btn-default pull-right' do %>
+    Edit Quiz <span class="glyphicon glyphicon-pencil"></span>
+    <%end%>
+<%end%>
+</div>
+<script type="text/javascript">
+  function span_for(type, text) {
+    return '<span class="'+type+'">'+text+'</span>'
+  }
+  <% information = @resource.information.blank? ? nil : ActiveSupport::JSON.decode(@resource.information)%>
+  <% if information %>
+    <%information["words"] = information["words"].shuffle %>
+    <%information = ActiveSupport::JSON.encode(information)%>
+  <%end%>
+  var information = <%=information ? raw(information) : 'undefined'%>;
+  if(information) {
+    $("#quiz").append(span_for('question', information["words"][0]["japanese"]))
+      .append(span_for('answer', information["words"][0]["english"]));
+    $('.answer').hide();
+  }
+  $('#flip').click(function() {
+    var state = $(this).attr('state');
+    if(state == '0') {
+      $('.question').hide();
+      $('.answer').show();
+      $(this).attr('state', '1');
+    } else {
+      var number = parseInt($(this).attr('number'))+1;
+      if(number >= information["words"].length) number = 0;
+      $('.question').text(information["words"][number]["japanese"]);
+      $('.answer').text(information["words"][number]["english"]);
+      $('.question').show();
+      $('.answer').hide();
+      $(this).attr('state', '0');
+      $(this).attr('number', number);
+    }
+  });
+</script>

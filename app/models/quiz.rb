@@ -1,0 +1,3 @@
+class Quiz < Resource
+
+end
