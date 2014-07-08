@@ -1,5 +1,5 @@
 <h4>Edit Resource</h4>
-<%=form_for [@course, @resource], url: course_resource_path(@course, @resource) do |f|%>
+<%=form_for [@course, @resource], url: course_resource_path(@course, @resource), html: {id: 'edit_resource'} do |f|%>
 <div class="form-group">
   <%=f.label :name%>
   <%=f.text_field :name, class: "form-control md"%>
@@ -9,11 +9,41 @@
   <%=f.text_field :type, class: "form-control md"%>
 </div>
 <% if @resource.type == 'Quiz' %>
-<div class="form-group">
-  <%=f.label :information%>
-  <%=f.text_area :information, class: "form-control md"%>
+<div id="words" class="form-group">
+  <div class="col-md-12">
+    <%=f.label :words%>
+  </div>
+  <% @words.each do |word| %>
+    <div class="col-md-6">
+      <input type="text" value="<%=word['japanese']%>" class="form-control"/>
+    </div>
+    <div class="col-md-6">
+      <input type="text" value="<%=word['english']%>" class="form-control"/>
+    </div>
+  <%end%>
 </div>
 <%end%>
-<%=f.submit "Submit", class: "btn btn-default"%>
-<%=link_to 'Back', course_resources_path(@course), class: "btn btn-default"%>
+<div class="form-group">
+  <a class="btn btn-default" id="submit">Submit</a>
+  <%=link_to 'Back', course_resources_path(@course), class: "btn btn-default"%>
+  <a id="add_pair" class="btn btn-default pull-right">Add Pair <span class="glyphicon glyphicon-plus"></span></a>
+</div>
 <%end%>
+<script type="text/javascript">
+  $('#add_pair').click(function() {
+    var html = '<div class="col-md-6"><input type="text" class="form-control"/></div>';
+    $('#words').append(html+html);
+  });
+  $('#submit').click(function(e) {
+    var information = {words: []},
+        words = $('#words input');
+    for(var i=0; i<words.length; i=i+2) {
+      if(!words[i+1]) break;
+      if(words[i].value == undefined || words[i].value == '' || words[i+1].value == undefined || words[i+1].value == '') continue;
+      information['words'].push({japanese: words[i].value, english: words[i+1].value});
+    }
+    $('#words').append('<input id="information" name="quiz[information]" type="hidden" />');
+    $('#information').val(JSON.stringify(information));
+    $('#edit_resource').submit();
+  });
+</script>

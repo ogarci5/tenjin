@@ -21,6 +21,11 @@ class ResourcesController < ApplicationController
   def edit
     @course = Course.find(params[:course_id])
     @resource = Resource.find(params[:id])
+    if @resource.type == 'Quiz' && @resource.information
+      @words = ActiveSupport::JSON.decode(@resource.information)['words']
+    else
+      @words = []
+    end
   end
   def update
     @course = Course.find(params[:course_id])
