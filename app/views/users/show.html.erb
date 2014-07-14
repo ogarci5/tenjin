@@ -1,0 +1,21 @@
+<h4><%=current_user.name%></h4>
+<h4>Preferences</h4>
+<dl class="dl-horizontal">
+  <dt>Theme</dt>
+  <dd>
+    <%=select_tag 'theme', options_for_select(themes, current_user.theme)%>
+  </dd>
+</dl>
+<script>
+  $('#theme').change(function() {
+    var blank = $(this).val() == '';
+    $('body').attr('class', '');
+    if(blank) $('body').addClass('blank');
+    else $('body').addClass($(this).val());
+    $.ajax({
+      url: '/user',
+      method: 'PUT',
+      data: 'theme='+$(this).val()
+    });
+  });
+</script>

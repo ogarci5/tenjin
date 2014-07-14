@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+
+  get '/register' => 'users#new'
+  post '/register' => 'users#create'
+  get '/user/:username' => 'users#show', as: 'user'
+  get '/user/:username/edit' => 'users#edit', as: 'edit_user'
+  put '/user' => 'users#update'
+
   resources :courses do
 		resources :units
     resources :resources
   end
 
-	get 'units/:id' => 'units#download'
+	get 'units/:id' => 'units#download', as: 'download_unit'
 	root 'home#index'
 	
 	# The priority is based upon order of creation: first created -> highest priority.

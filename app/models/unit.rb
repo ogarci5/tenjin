@@ -5,7 +5,7 @@ class Unit < ActiveRecord::Base
 	validates_attachment_presence :audio
 	validates_attachment_content_type :audio, :content_type => [ 'audio/mp3','audio/mpeg']
 
-	before_save :set_name
+	after_save :set_name
 	BYTES_PER_SEC = 16004.96358521672
 
 	def time
@@ -22,7 +22,9 @@ class Unit < ActiveRecord::Base
 
 	def set_name
 		name = "Unit #{self.number}.mp3"
+    return if self.audio.path == File.join(File.dirname(self.audio.path), name)
 		self.rename(name)
 		self.audio_file_name = "Unit #{self.number}.mp3"
+    self.save
 	end
 end

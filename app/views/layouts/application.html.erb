@@ -7,34 +7,19 @@
 	<%= mp3_player_headers %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%=theme_class%>">
 <div class="container">
 <div class="col-md-8 col-md-offset-2">
-<h3 onclick="background();">Tenjin</h3>
+<h3 class="header"><a href="/">Tenjin</a></h3>
+<h6 class="header pull-right">
+  <%if current_user%>
+    <%=link_to current_user.name, user_path(current_user.name)%> | <%=link_to 'logout', logout_path, method: :delete%>
+  <%else%>
+    <%=link_to 'Login', login_path %>
+<%end%>
+</h6>
 <%= yield %>
 </div>
 </div>
 </body>
 </html>
-<script>
-function background() {
-	var color = $("body").css('background-color');
-	var inaba = {"background-image" : "url(\"/images/BestGirl.png\")",
-							"background-size" : "100%",
-							"background-position" : "center top",
-							"background-repeat" : "no-repeat",
-							"background-color" : "#121212",
-							"color" : "white"};
-	var normal = {"background-color" : "white", "background-image" : "none", "color" : "#333"};
-
-	if(color != 'rgb(18, 18, 18)') {
-		$("body").css(inaba);
-		$("a").not('.btn').not('ul a').css('color', 'white');
-		$("a:hover").not('.btn').css('color', "#dadada");
-	} else {
-		$("body").css(normal);
-		$("a").not('.btn').not('ul a').css('color', '#428bca');
-		$("a:hover").not('.btn').css("color", "#2a6496");
-	}
-}
-</script>
