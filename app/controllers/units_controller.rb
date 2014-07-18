@@ -1,8 +1,7 @@
 class UnitsController < ApplicationController
 	def index
 		@course = Course.find(params[:course_id])
-		@units = @course.units
-		@units = @course.units.paginate(:page => params[:page], :per_page => 10)
+		@units = @course.units.order('number ASC').paginate(:page => params[:page], :per_page => 10)
 	end
 	
 	def new

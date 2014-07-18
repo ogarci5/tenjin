@@ -1,0 +1,28 @@
+<h4><%=@course.name%> - Readings</h4>
+<table class="table">
+<tr>
+	<th colspan="2">Reading</th>
+	<th>Time</th>
+	<th>Download</th>
+</tr>
+<%@readings.each do |reading|%>
+<tr>
+	<td><%=reading.number%></td>
+	<td style="width:100%;">
+		<audio class="mp3_player" preload="none" controls>
+			<source src="<%=reading.audio.url%>" type="audio/mpeg">
+			"Your browser does not support the audio element."
+		</audio>
+	<td><%=reading.time%></td>
+	<td><%=link_to 'Download', "/readings/#{reading.id}", target: '_blank'%></td>
+</tr>
+<%end%>
+<tr>
+  <td colspan="4">
+    <%= will_paginate @readings, renderer: BootstrapPagination::Rails %>
+    <a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/readings/new">
+       New reading  <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </td>
+</tr>
+</table>
