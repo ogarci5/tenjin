@@ -11,8 +11,8 @@ class ReadingsController < ApplicationController
 
   def create
     @course = Course.find(params[:course_id])
-    @unit = @course.readings.build(params[:unit])
-    @unit.save
+    @reading = @course.readings.build(params[:reading])
+    @reading.save
     redirect_to course_readings_path(@course)
   end
 
