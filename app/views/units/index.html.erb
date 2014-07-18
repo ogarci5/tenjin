@@ -14,13 +14,13 @@
 			"Your browser does not support the audio element."
 		</audio>
 	<td><%=unit.time%></td>
-	<td><%=link_to 'Download', "/units/#{unit.id}"%></td>
+	<td><%=link_to 'Download', "/units/#{unit.id}", target: '_blank'%></td>
 </tr>
 <%end%>
 <tr>
   <td colspan="4">
     <%= will_paginate @units, renderer: BootstrapPagination::Rails %>
-    <a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new" target="_blank">
+    <a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/units/new">
        New Unit  <span class="glyphicon glyphicon-plus"></span>
     </a>
   </td>
