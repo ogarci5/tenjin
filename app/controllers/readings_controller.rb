@@ -6,7 +6,8 @@ class ReadingsController < ApplicationController
 
   def new
     @course = Course.find(params[:course_id])
-    @reading = @course.readings.build
+    auto_increment = @course.readings.count + 1
+    @reading = @course.readings.build(number: auto_increment)
   end
 
   def create
