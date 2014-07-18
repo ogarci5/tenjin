@@ -14,8 +14,9 @@
   <td colspan="4">
     <%= will_paginate @resources, renderer: BootstrapPagination::Rails %>
     <a class="btn btn-default pull-right" href="/courses/<%=@course.id%>/resources/new">
-        New Resource  <span class="glyphicon glyphicon-plus"></span>
+      New Resource  <span class="glyphicon glyphicon-plus"></span>
     </a>
+    <a class="btn btn-default pull-right" href="/courses">Back</a>
   </td>
 </tr>
 </table>
