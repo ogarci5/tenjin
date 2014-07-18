@@ -21,10 +21,10 @@ class Reading < ActiveRecord::Base
 	end
 
 	def set_name
-		name = "Unit #{self.number}.mp3"
+		name = "Reading #{self.number}.mp3"
 		return if self.audio.path == File.join(File.dirname(self.audio.path), name)
 		self.rename(name)
-		self.audio_file_name = "Unit #{self.number}.mp3"
+		self.audio_file_name = "Reading #{self.number}.mp3"
 	  self.save
  	end
 end
