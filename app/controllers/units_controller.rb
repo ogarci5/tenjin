@@ -6,7 +6,8 @@ class UnitsController < ApplicationController
 	
 	def new
 		@course = Course.find(params[:course_id])
-		@unit = @course.units.build
+    auto_increment = @course.units.count
+    @unit = @course.units.build(number: auto_increment)
 	end
 	
 	def create
