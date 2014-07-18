@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
   resources :courses do
 		resources :units
+		resources :readings
     resources :resources
   end
 
 	get 'units/:id' => 'units#download', as: 'download_unit'
+	get 'readings/:id' => 'readings#download', as: 'download_reading'
 	root 'home#index'
 	
 	# The priority is based upon order of creation: first created -> highest priority.
