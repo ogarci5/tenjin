@@ -42,16 +42,20 @@ body.Chitoge {
 	background-color: #121212;
 }
 
-.pagination {
+ul.pagination {
 	margin: 0;
 }
-.pagination a {
+ul.pagination a {
 	color: #428bca;
 	text-decoration: none;
 	&:hover, &:focus {
 		color: #2a6496;
 		text-decoration: underline;
 	}
+}
+
+a.btn.btn-default {
+	color: #121212;
 }
 
 .header {
