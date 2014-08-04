@@ -1,19 +1,19 @@
-class SessionsController < ApplicationController
-  skip_before_filter :require_login
+class SessionsController < Devise::SessionsController
+  skip_before_filter :authenticate_user!
+
   def new
   end
 
   def create
-    user = User.find_by_username(params[:session][:username])
-    p params
-    if user && user.authenticate(params[:session][:password])
-      login user
-      redirect_to root_path
-    end
+    p self.resource
+    p auth_options
+    p resource_name
+    p
+    #ObjectSpace.each_object(self.class) {|x| p x }
+    super
   end
 
   def destroy
-    logout
-    redirect_to root_path
+    super
   end
 end

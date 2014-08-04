@@ -1,61 +1,76 @@
 @import "bootstrap";
 
 .mp3_player {
-	width:100%;
+  width:100%;
 }
 
 body.Inaba {
-	background-image: url("/images/inaba1.png");
-	background-size: 100%;
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-color: #121212;
-	color: white;
-	a {
-		color: white;
-		&:hover {
-			color: #dadada;
-		}
-	}
+  background-image: url("/images/inaba1.png");
+  background-size: 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #121212;
+  color: white;
+  a {
+  	color: white;
+  	&:hover {
+  		color: #dadada;
+  	}
+  }
 }
 
 body.blank {
-	background-image: url("/images/blank.gif");
-	background-size : 100%;
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-color: #121212;
-	color: white;
-	a {
-		color: white;
-		&:hover {
-			color: #dadada;
-		}
-	}
+  background-image: url("/images/blank.gif");
+  background-size : 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #121212;
+  color: white;
+  a {
+  	color: white;
+  	&:hover {
+  		color: #dadada;
+  	}
+  }
 }
 
 body.Chitoge {
-	background-image: url("/images/chitoge.png");
-	background-size : 100%;
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-color: #121212;
+  background-image: url("/images/chitoge.png");
+  background-size : 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #121212;
+}
+
+body.Akatsuki {
+  background-image: url("/images/akatsuki.png");
+  background-size : 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #121212;
+  color: white;
+  a {
+    color: white;
+    &:hover {
+      color: #dadada;
+    }
+  }
 }
 
 ul.pagination {
 	margin: 0;
 }
 ul.pagination a {
-	color: #428bca;
-	text-decoration: none;
-	&:hover, &:focus {
-		color: #2a6496;
-		text-decoration: underline;
-	}
+  color: #428bca;
+  text-decoration: none;
+  &:hover, &:focus {
+  	color: #2a6496;
+  	text-decoration: underline;
+  }
 }
 
 a.btn.btn-default {
-	color: #121212;
+  color: #121212;
 }
 
 .header {

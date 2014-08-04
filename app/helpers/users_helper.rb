@@ -4,9 +4,8 @@ module UsersHelper
   end
 
   def themes
-    themes = ['Default', 'Inaba', 'Chitoge', '']
+    themes = User::THEMES
     themes.delete_if{|theme| theme.blank?} unless current_user.name == '空白'
-    p themes
     themes
   end
 end

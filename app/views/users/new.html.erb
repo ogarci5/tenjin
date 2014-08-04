@@ -1,3 +1,11 @@
+<% unless @user.errors.empty? %>
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <% @user.errors.full_messages.each do |message| %>
+      <p><%=message%></p>
+    <% end %>
+  </div>
+<% end %>
 <%=form_for @user, url: register_path do |f| %>
   <div class="form-group">
     <%=f.label :username%>

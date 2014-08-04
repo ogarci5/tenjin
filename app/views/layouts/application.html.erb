@@ -13,11 +13,17 @@
 <h3 class="header"><a href="/">Tenjin</a></h3>
 <h6 class="header pull-right">
   <%if current_user%>
-    <%=link_to current_user.name, user_path(current_user.name)%> | <%=link_to 'logout', logout_path, method: :delete%>
+    <%=link_to current_user.name, user_path(current_user.name)%> | <%=link_to 'logout', destroy_user_session_path, method: :delete%>
   <%else%>
-    <%=link_to 'Login', login_path %>
+    <%=link_to 'Login', user_session_path %>
 <%end%>
 </h6>
+<% if alert || notice || !flash.empty? %>
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <%= alert || notice || flash %>
+  </div>
+<%end%>
 <%= yield %>
 </div>
 </div>
