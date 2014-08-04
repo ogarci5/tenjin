@@ -12,6 +12,10 @@ class Unit < ActiveRecord::Base
 		time = self.audio_file_size.to_f / BYTES_PER_SEC
 		minutes = (time / 60.0).floor
 		seconds = (time - minutes*60.0).round
+		if seconds == 60
+			minutes += 1
+			seconds = 0
+		end
 		seconds = '0' + seconds.to_s if seconds < 10
 		"#{minutes}:#{seconds}"
 	end
