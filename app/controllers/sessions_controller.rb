@@ -5,11 +5,6 @@ class SessionsController < Devise::SessionsController
   end
 
   def create
-    p self.resource
-    p auth_options
-    p resource_name
-    p
-    #ObjectSpace.each_object(self.class) {|x| p x }
     super
   end
 

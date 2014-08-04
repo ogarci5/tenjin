@@ -10,13 +10,6 @@ class User < ActiveRecord::Base
 
   THEMES = ['Default', 'Inaba', 'Chitoge', 'Akatsuki', '']
 
-  def self.find_for_authentication(tainted_conditions)
-
-    conditions = tainted_conditions.dup
-    p conditions
-    where(conditions).first
-  end
-
   def name
     self.username.blank? ? '空白' : self.username
   end
