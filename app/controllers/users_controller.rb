@@ -22,8 +22,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.theme = params[:theme] if params[:theme]
-    current_user.save
-    render :show
+    user = User.find(params[:id])
+    user.update_attributes(params[:user])
+    user.save
+    p user.errors
+    redirect_to :back
   end
 end

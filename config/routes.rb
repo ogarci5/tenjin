@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   post '/register' => 'users#create'
   get '/user/:username' => 'users#show', as: 'user'
   get '/user/:username/edit' => 'users#edit', as: 'edit_user'
-  put '/user' => 'users#update'
+  put '/user/:id' => 'users#update'
+  patch '/user/:id' => 'users#update'
 
   resources :courses do
 		resources :units
